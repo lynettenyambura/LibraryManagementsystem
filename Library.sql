@@ -127,23 +127,15 @@ END;
 
 -- Inserting additional data to test trigger functionality
 INSERT INTO Loans (LoanID, BookID, MemberID, LoanDate, ReturnDate)
-VALUES (6, 1, 3, '2023-05-15', '2023-06-15'); -- This should trigger the PreventExcessiveBorrowing trigger
+VALUES (6, 1, 3, '2023-05-15', '2023-06-15'); 
 
-
-
-
--- Inserting data to test the OverdueLoansView
 INSERT INTO Loans (LoanID, BookID, MemberID, LoanDate, ReturnDate)
-VALUES (5, 1, 1, '2023-05-20', '2023-06-02'); -- This loan is overdue
+VALUES (5, 1, 1, '2023-05-20', '2023-06-02'); 
 
--- Verify the OverdueLoansView
+
 SELECT *
 FROM OverdueLoansView;
 
--- Calling the CalculateOverdueDays function
-DECLARE @OverdueDays INT;
-SET @OverdueDays = dbo.CalculateOverdueDays(5); -- Assuming LoanID 5 is an overdue loan
-SELECT @OverdueDays;
 
 
 
